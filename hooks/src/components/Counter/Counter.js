@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Counter(props) {
 
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
   return (
     <div>
-      <p>{props.name}: {count}</p>
+      <p>You clicked {count} times</p>
       <button onClick={() => setCount(count + 1)}>
-        Vote {props.name}
+        Click me
       </button>
     </div>
-  )
+  );
 }
