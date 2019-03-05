@@ -6,17 +6,40 @@ export default function Vote() {
   const [sobbleCount, setSobbleCount] = useState(0);
   const [grookeyCount, setGrookeyCount] = useState(0);
   const [scorbunnyCount, setScorbunnyCount] = useState(0);
-  const [textField, setTextField] = useState("");
+  const [form, setForm] = useState({});
 
+  function handleInputChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setForm({
+      ...form,
+      [name]: value
+    })
+  }
 
   return (
     <div>
       <form action="">
-        <p>Type a message: {textField}</p>
+        <p>Name: {form.name}</p>
         <input 
-          onChange={(e) => setTextField(e.target.value)}
+          onChange={(e) => handleInputChange(e)}
           type="text" 
-          name="text" 
+          name="name" 
+          id=""
+        />
+        <p>Phone: {form.phone}</p>
+        <input 
+          onChange={(e) => handleInputChange(e)}
+          type="text" 
+          name="phone" 
+          id=""
+        />
+        <p>Birthday: {form.birthday}</p>
+        <input 
+          onChange={(e) => handleInputChange(e)}
+          type="text" 
+          name="birthday" 
           id=""
         />
       </form>
