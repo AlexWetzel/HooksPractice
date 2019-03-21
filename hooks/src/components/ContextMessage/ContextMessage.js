@@ -6,7 +6,7 @@ class ContextMessage extends React.Component {
   render() {
     return (
       <div>
-        <ContextTest.Provider value="This is a test">
+        <ContextTest.Provider value="This is a test without using hooks">
           <Message />
         </ContextTest.Provider>
       </div>
@@ -14,15 +14,26 @@ class ContextMessage extends React.Component {
   }
 }
 
-class Message extends React.Component {
+// class Message extends React.Component {
 
 
-  static contextType = ContextTest;
-  render() {
+//   static contextType = ContextTest;
+//   render() {
+//     return (
+//       <h3>{this.context}</h3>
+//     )
+//   }
+
+// }
+
+function Message() {
+
     return (
-      <h3>{this.context}</h3>
-    )
-  }
+      <ContextTest.Consumer>
+        {value => <h3>{value}</h3>}
+      </ContextTest.Consumer>
+      
+    )  
 
 }
 
