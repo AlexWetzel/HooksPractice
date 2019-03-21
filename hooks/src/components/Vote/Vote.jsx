@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Counter from "../../components/Counter";
 
-export default function Vote() {
+
+
+function Vote() {
 
   const [sobbleCount, setSobbleCount] = useState(0);
   const [grookeyCount, setGrookeyCount] = useState(0);
   const [scorbunnyCount, setScorbunnyCount] = useState(0);
   const [form, setForm] = useState({});
+
+  useEffect(() => {
+    console.log("test")
+  });
 
   function handleInputChange(e) {
     const name = e.target.name;
@@ -15,11 +21,12 @@ export default function Vote() {
     setForm({
       ...form,
       [name]: value
-    })
+    });
   }
 
   return (
     <div>
+
       <form action="">
         <p>Name: {form.name}</p>
         <input 
@@ -27,6 +34,7 @@ export default function Vote() {
           type="text" 
           name="name" 
           id=""
+          value={form.name}
         />
         <p>Phone: {form.phone}</p>
         <input 
@@ -34,6 +42,7 @@ export default function Vote() {
           type="text" 
           name="phone" 
           id=""
+          value={form.phone}
         />
         <p>Birthday: {form.birthday}</p>
         <input 
@@ -41,6 +50,7 @@ export default function Vote() {
           type="text" 
           name="birthday" 
           id=""
+          value={form.birthday}
         />
       </form>
       <Counter />
@@ -55,3 +65,5 @@ export default function Vote() {
     </div>
   )
 }
+
+export default Vote;
